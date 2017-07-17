@@ -1,0 +1,175 @@
+Assessment Centre Prep
+
+Exercise 1
+
+Encapsulation
+The process within Java of wrapping data (variables) and code acting on the data (methods) together as a single unit. It is also known as data hiding.
+To achieve this in Java:
+* Declare the variables of a class as private.
+* Provide public setter and getter methods to modify and view the variables values.
+Example:
+public class EncapTest {
+   private String name;
+   private String idNum;
+   private int age;
+
+   public int getAge() {
+      return age;
+   }
+
+   public String getName() {
+      return name;
+   }
+
+   public String getIdNum() {
+      return idNum;
+   }
+
+   public void setAge( int newAge) {
+      age = newAge;
+   }
+
+   public void setName(String newName) {
+      name = newName;
+   }
+
+   public void setIdNum( String newId) {
+      idNum = newId;
+   }
+}
+
+
+
+
+
+The variables of the EncapTest class can be accessed using the following program ?
+public class RunEncap {
+
+   public static void main(String args[]) {
+      EncapTest encap = new EncapTest();
+      encap.setName("James");
+      encap.setAge(20);
+      encap.setIdNum("12343ms");
+
+Inheritance
+Inheritance allows one class to use functionality defined in another class for example if we had a class called Animal and a class called Dog. Dog could inherit the Animal class as a dog is an animal and will use the items within the Animal class.
+Example:
+class Dog extends Animal{
+  
+  int age;
+
+	public Dog(int dogsAge) {
+    
+  	age = dogsAge;
+    
+  }
+  
+  public void bark() {
+		
+    System.out.println("Woof!");
+    
+	}
+
+  public void run(int feet) {
+
+    System.out.println("Your dog ran " + feet + " feet!");
+    
+  }
+  
+  public int getAge() {
+    
+    return age;
+    
+  }
+  
+	public static void main(String[] args) {
+    
+    Dog spike = new Dog(5);
+    spike.bark();
+    spike.run(60);
+    
+    int spikeAge = spike.getAge();
+    System.out.println(spikeAge);
+    
+    spike.checkStatus();
+
+	}
+
+}
+This class inherits Animal:
+class Animal {
+
+	public void checkStatus() {
+
+		System.out.println("Your pet is healthy and happy!");
+
+	}
+}
+If the Dog class had not inherited the Animal class, I would have had to declare the method ‘checkStatus’ this the Dog class otherwise I would have had an error when I run the code.
+
+Polymorphism
+Polymorphism is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.
+Example:
+public interface Vegetarian{}
+public class Animal{}
+public class Deer extends Animal implements Vegetarian{}
+Now, the Deer class is considered to be polymorphic since this has multiple inheritance. Following are true for the above examples ?
+* A Deer IS-A Animal
+* A Deer IS-A Vegetarian
+* A Deer IS-A Deer
+* A Deer IS-A Object
+Abstraction
+Object-oriented programming, abstraction is a process of hiding the implementation details from the user, only the functionality will be provided to the user. In other words, the user will have the information on what the object does instead of how it does it.
+In Java, abstraction is achieved using Abstract classes and interfaces.
+A class which contains the abstract keyword in its declaration is known as abstract class.
+* Abstract classes may or may not contain abstract methods, i.e., methods without body ( public void get(); )
+* But, if a class has at least one abstract method, then the class must be declared abstract.
+* If a class is declared abstract, it cannot be instantiated.
+* To use an abstract class, you have to inherit it from another class, provide implementations to the abstract methods in it.
+* If you inherit an abstract class, you have to provide implementations to all the abstract methods in it.
+Example:
+To create an abstract class, just use the abstract keyword before the class keyword, in the class declaration.
+public abstract class Employee {
+   private String name;
+   private String address;
+   private int number;
+
+   public Employee(String name, String address, int number) {
+      System.out.println("Constructing an Employee");
+      this.name = name;
+      this.address = address;
+      this.number = number;
+   }
+   
+   public double computePay() {
+     System.out.println("Inside Employee computePay");
+     return 0.0;
+   }
+   
+   public void mailCheck() {
+      System.out.println("Mailing a check to " + this.name + " " + this.address);
+   }
+
+   public String toString() {
+      return name + " " + address + " " + number;
+   }
+
+   public String getName() {
+      return name;
+   }
+ 
+   public String getAddress() {
+      return address;
+   }
+   
+   public void setAddress(String newAddress) {
+      address = newAddress;
+   }
+ 
+   public int getNumber() {
+      return number;
+   }
+}
+You can observe that except abstract methods the Employee class is same as normal class in Java. The class is now abstract, but it still has three fields, seven methods, and one constructor.
+To be able to use the information within this class, you will need to inherit it into a class and the run each method as and when required.
+
